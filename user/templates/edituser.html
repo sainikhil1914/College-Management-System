@@ -1,0 +1,101 @@
+{% extends 'admin.html'%}
+{% block sty%}
+
+.th{
+    text-align:center;
+    height:50px;
+    background-color:#0d6efd;  
+  }
+{% endblock%}
+
+{% block media%}
+.outer{
+  width:100vw;
+  overflow-x:scroll;
+}
+table{
+  width:800px;
+}
+{% endblock%}
+{% block content%}
+   
+<center>
+    <a href="/adduserdetails">
+    <button class="btn btn-primary">Add Users</button>
+    </a>
+    <h2 class="my-2 text-primary">User LoginDetails</h2>
+</center>
+<div class="outer">
+   <table class="table table-bordered">
+    <tr class="th">
+       <th>S.No</th> <th>Name</th><th>Username</th><th>Usertype</th><th>Department</th><th>Edit</th><th>Save</th>
+    </tr>
+    {% for user in lg%}
+    {% if user.username != ""%}
+    <tr>
+        {% if user.username == pk %}
+            <form action='/savechanges' method='post'>
+                {% csrf_token%}
+                <td>{{forloop.counter0}}</td>
+                <td><input class="form-control form-control-sm" type="text" name="name" value="{{user.name}}"></td>
+                <td><input type="text" name="username" class="form-control form-control-sm" value="{{user.username}}"></td>
+                <td>
+                    <select class="form-control form-control-sm" name="usertype"style="width:100px;">
+                        <option value={{user.usertype}} disabled selected>Usertype &#x25BC;</option>
+                        <option value="Faculty">Faculty</option>
+                        <option value="Student">Student</option>
+                    </select>
+                </td>
+                <td>
+                    <select class="form-control form-control-sm" name="dept" style="width:130px;">
+                        <option value={{user.dept}} disabled selected>Department &#x25BC;</option>
+                        <option value="Cse">Cse</option>
+                        <option value="Java_Programming_Cse">Java Programming</option>
+                        <option value="Web_Technologies_Cse">Web Technologies</option>
+                        <option value="Data_Structures_Cse">Data Structures</option>
+                    </select>
+                </td>
+                <td>
+                <a href="{% url 'edituser' pk=user.username %}"><img src="../static/img/edit.gif" style="height:30px;"></td></a><td><button><img src="../static/img/icons8-checkmark.gif"></button></td>
+            </form>
+        {% endif%}
+        {% if user.username != pk %}
+        <td>{{forloop.counter0}}</td><td>{{user.name}}</td><td>{{user.username}}</td><td>{{user.usertype}}</td><td>{{user.dept}}</td><td>
+            <a href="{% url 'edituser' pk=user.username %}"><img src="../static/img/edit.gif" style="height:30px;"></td></a>
+        {% endif %}
+    </tr>
+    {% endif%}
+    {% endfor%}
+   {% if adduser == 'yes' %}
+   <form action='/adduserdetails' method='post'>
+    {% csrf_token%}
+   <td>{{count}}</td>
+   <td><input type="text" class="form-control border-2 border-black" style="height:30px;" name="name"></td>
+   <td><input type="text" class="form-control border-2 border-black" style="height:30px;" name="username"></td>
+   <td>
+    <select class="form-control form-control-sm" name="usertype"style="width:100px;">
+        <option >Usertype &#x25BC;</option>
+        <option value="Faculty">Faculty</option>
+        <option value="Student">Student</option>
+    </select>
+    </td>
+    <td>
+    <select class="form-control form-control-sm" name="dept" style="width:130px;">
+        <option >Department &#x25BC;</option>
+        <option value="Cse">Cse</option>
+        <option value="Java_Programming_Cse">Java Programming</option>
+        <option value="Web_Technologies_Cse">Web Technologies</option>
+        <option value="Data_Structures_Cse">Data Structures</option>
+    </select>
+</td>
+<td><button><img src="../static/img/icons8-checkmark.gif"></button></td>
+</form>
+     {% endif %}
+   </table>
+</div>
+
+<script>
+    a=document.getElementById('userlogin')
+    a.style.backgroundColor="#f2f2f2";
+  </script> 
+{% endblock%}

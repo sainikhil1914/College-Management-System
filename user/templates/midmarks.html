@@ -1,0 +1,47 @@
+{% extends 'base.html'%}
+{% comment %} {% block style%}
+.midd,table{
+  width:60vw;
+}
+{%endblock%} {% endcomment %}
+{% block media%}
+.midd{
+  width:95vw;
+  overflow-x:scroll;
+}
+table,.tab{
+  width:600px;
+}
+{%endblock%}
+{% block content%}
+<strong>
+    <div class="mx-3 mt-3"> Student Name: {{name}}</div>
+     <div class="mx-3">Roll No: {{uname}}</div> 
+</strong>
+<br>
+
+<center>
+<div  class="midd py-3"style="border-radius:20px;">
+<div class="h3 border-3 border-dark underline" style="color:#FF2E63;">
+    Midterm Marks
+</div>
+<div>
+  <table class="mx-3 table tab table-hover">
+    <tr>
+        <th>S.No</th><th>Subject</th><th>Mid1</th><th>Mid 2</th>
+    </tr>
+    <tr><td>1</td><td>Java Programming</td><td>{{m1.Java_Programming_Cse}}</td><td>{{m2.Java_Programming_Cse}}</td>
+    <tr><td>2</td><td>Data Structures</td><td>{{m1.Data_Structures_Cse}}</td><td>{{m2.Data_Structures_Cse}}</td>
+    <tr><td>3</td><td>Web Technologies</td><td>{{m1.Web_Technologies_Cse}}</td><td>{{m2.Web_Technologies_Cse}}</td>
+
+  </table>
+</div>
+</div>
+</center>
+<script>
+    a=document.getElementById('mid')
+    b=document.getElementById('academics')
+    a.style.backgroundColor="#f2f2f2";
+    b.style.backgroundColor="#f2f2f2";
+  </script>
+  {% endblock%}

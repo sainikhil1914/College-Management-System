@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+{% block style %}
+.input{
+  width:60vw;
+}
+{% endblock%}
+{% block media %}
+.outer{
+  width:80vw;
+  overflow-x:scroll;
+}
+.input{
+  width:400px;
+}
+{% endblock %}
+{% block content %}
+<center>
+<div class="" style="margin-top:10px;">
+    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+      Mid Exam
+    </button>
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="/mid1">Mid 1</a></li>
+        <li><a class="dropdown-item" href="/mid2">Mid 2</a></li>
+    </ul>
+</div>
+</center>
+<div style="width:100vw;">
+{% block d %}
+{% endblock %}
+</div>
+
+
+{% block script%}
+<script>
+  a=document.getElementById('assignment')
+  a.style.backgroundColor="#f2f2f2";
+</script>
+{% endblock %}
+{% endblock %}

@@ -1,0 +1,202 @@
+<html>
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+      
+      {% block style %}
+      {% endblock %}
+      body{
+    font-family: Arial, sans-serif;
+      }
+      .cont{
+        overflow-x:auto;
+      }
+      .midd,table{
+        width:60vw;
+      }
+.tab{
+  width:90%;
+}
+      .midd{
+        transition: box-shadow .3s;
+        box-shadow: rgba(99,99,99,.2)2px 2px 10px 10px;
+      }
+      .profile{
+        transition: box-shadow .3s;
+      }
+      .profile:hover {
+        box-shadow: 0 0 11px rgba(33,33,33,.2); 
+    }
+      .bar{
+        width:75%;
+        height:25px;
+        margin-bottom:10px;
+        border:1px solid black;
+      }
+      .box{
+        width:270px;
+        height:300px;
+        border-radius:10px;
+        background-color:#fff;
+        position:relative;
+        bottom:160px;
+        border:1px solid gray;
+      }
+      .index{
+        position:relative;
+        top:50px;
+      }
+      .containerr {
+        display: flex;
+      }
+      .navi{
+        background-color:#fff;
+      }
+      .div1, .div2 {
+        width: 50%;
+      }
+      .btn{
+        color:black;
+        background-color:#fff;
+      }
+      .dropitem{
+        display:center;
+      }
+    a:hover,.btn:hover,#drop:hover,.dropitem:hover {
+      color: black;
+      background-color: #f2f2f2;
+    }
+    .mid{
+      width:90vw;
+    }
+    {% comment %} .assignment{
+      width:100vw;
+    } {% endcomment %}
+    {% comment %} .assign{
+      border:2px solid black;
+      position:relative;
+      right:250px;
+    } {% endcomment %}
+    
+    th,td{
+      text-align:center;
+    }
+    @media screen and (max-width:900px)
+    {
+      {% block media%}
+      {%endblock%}
+      .tab{
+        width:500px;
+      }
+      .cont{
+        width:95vw;
+        overflow-x:scroll;
+      }
+       .containerr,.div1,.div2{
+        display:block;
+        width:100%;
+       }
+       .div2{
+        margin-left:10px;
+       }
+       .div3,.logout{
+        display:none;
+       }
+       .mid{
+        width:500px;
+       }
+       .index{
+        position:relative;
+        left:20px;
+       }
+      .assignment{
+        width:800px;
+      }
+      .underline{
+        width:580px;
+      }
+      .assign{
+        position:relative;
+        right:160px;
+      }
+      .navi{
+        width:600px;
+      }
+      .home{
+        padding-top:10px;
+      }
+      .box{
+        margin:8px 0px;
+        width:270px;
+        position:relative;
+        right:10px;
+      }
+      .bar{
+        width:350px;
+        height:25px;
+        margin-bottom:10px;
+        border:1px solid black;
+      }
+    }
+  </style>
+  </head>
+<body style="background-color:#fff;"> 
+  <nav class="navbar navbar-expand-lg sticky-top navi" style="width:100vw;">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav home">
+              <li class="nav-item">
+                <a class="nav-link btn" id="home" style="color:black;border:0px;" href="/index"><strong>Home</strong></a>
+              </li>
+              <center>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark dropitem" href="#" style="border-radius:10px;" id="academics" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <strong>Academics</strong>
+                </a>
+                <ul class="dropdown-menu" id="drop" style="background-color:#fff;">
+                  <li><a class="dropdown-item dropitem btn" id="sem" href="/semresults">Semester Results</a></li>
+                  <li><a class="dropdown-item dropitem btn" id="mid" href="/mid">Mid Marks</a></li>
+                  <li><a class="dropdown-item dropitem btn" id="assign" href="/assignmentquestions">Assigmnet Questions</a></li>
+                  <li><a class="dropdown-item dropitem btn" id="tt" href="/displaytimetable">Time Table</a></li>
+                </ul>
+              </li>
+            </center>
+
+              <li class="nav-item">
+                <a class="nav-link btn" id="attendance"style="color:black;border:0px;" href="/attendance"><strong>Attendance</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn" id="contactus"style="color:black;border:0px;" href="/contactus"><strong>Contact Us</strong></a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link btn" id="logout"style="color:black;border:0px;" href="/logout"><strong>LogOut</strong></a>
+              </li>
+              <li class="nav-item dropdown logout profile" style="position:relative;left:710px; background-color:orange; border-radius:20px;">
+                <button class="btn dropdown-toggle text-dark;" data-bs-toggle="dropdown" style="background-color:#fafafa;border:2px solid black;"aria-expanded="false">
+                 <p style="font-size:130%;display:inline;">&equiv;</p> {{uname}}
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item disabled" href="#">{{name}}</a></li>
+                  <li><a class="dropdown-item" href="/logout">LogOut</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>   
+
+
+      
+      {% block content %}
+      {% endblock %} 
+      
+      {% block script %}
+      {% endblock %}
+    </body>
+</html>

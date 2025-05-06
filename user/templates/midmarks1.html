@@ -1,0 +1,50 @@
+{% extends 'marks.html'%}
+{% block marks%}
+<center>
+<form action="/midmarks1" method="post">
+    {% csrf_token %}
+    <div class="outer">
+        <table class="table mt-3 tab border-2 table-bordered">
+            <thead>
+              <tr style="background-color:#f0f0f0;">
+                <th scope="col">Name</th>
+                <th scope="col">Reg No.</th>
+                <th scope="col">Mid 1</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% if sub == "Java_Programming_Cse" %}
+                      {% for student in students%}
+                      <tr>
+                          <th scope="row">{{student.name}}</th>
+                          <td>{{student.username}}</td>
+                          <td><input type="number" class="input" name="{{student.username}}" value="{{student.Java_Programming_Cse}}"class="text-black"></td>
+                      </tr>
+                      {% endfor %}
+                {% endif%}
+                {% if sub == "Data_Structures_Cse" %}
+                      {% for student in students%}
+                      <tr>
+                          <th scope="row">{{student.name}}</th>
+                          <td>{{student.username}}</td>
+                          <td><input type="number" class="input" name="{{student.username}}" value="{{student.Data_Structures_Cse}}"class="text-black"></td>
+                      </tr>
+                      {% endfor %}
+                {% endif %}
+                {% if sub == "Web_Technologies_Cse" %}
+                      {% for student in students%}
+                      <tr>
+                          <th scope="row">{{student.name}}</th>
+                          <td>{{student.username}}</td>
+                          <td><input type="number" class="input" name="{{student.username}}" value="{{student.Web_Technologies_Cse}}"class="text-primary bg-black text-white"></td>
+                      </tr>
+                      {% endfor %}
+                {% endif %}
+            </tbody>
+          </table>
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" style="margin-right:35px;">
+    </form>
+</center>
+    {% endblock%}

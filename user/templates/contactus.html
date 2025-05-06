@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block media%}
+{%endblock%}
+{% block content %}
+<center>
+  <form action='/contactus' id="formm"method='post'>
+    {% csrf_token %}
+  <div class="mb-3 row mx-3" style="width:90vw;">
+    <span class="" style="width:90vw"><b>Username :</b>
+      <strong style="display:inline;color:#0d6efd;width:90vw">{{uname}}</strong></span>
+    <label class="col-sm-2 col-form-label" style="width:90vw"><b>Student Name : </b>
+      <strong style="display:inline;color:#0d6efd;width:90vw;">{{name}}</strong></label>
+
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Choose from our faculty members for expert guidance and support.
+    </button>
+    <ul class="dropdown-menu">
+      {% for user in users%}
+      <li><a class="dropdown-item" href="send_message/{{user.username}}">{{user.name}}   <b> {{user.dept}}</b></a></li>
+       {% endfor %}
+    </ul>
+  </div>
+</center>
+
+
+
+
+  {% block contactus %}
+  {% endblock%}
+    {% comment %} <p for="exampleFormControlTextarea1" class="form-label my-3" style="display:block;"><b>Enter Your Message</b></p><br>
+      <div class="mb-3 boxx">
+        <textarea class="form-control m-0" id="exampleFormControlTextarea1" name="text" rows="3" style="width:700px;height:200px;border:2px solid grey;color:#black;" placeholder="Start Writing From Here....."></textarea>
+      </div>
+    <div class="col-auto" style="">
+    </div>
+  </div>
+  <center><input type="submit" style="background-color:#FF2E63;" class="btn mb-3"></center> {% endcomment %}
+</form>
+
+{% comment %} {{text}} {% endcomment %}
+
+<script>
+  a=document.getElementById('contactus')
+  a.style.backgroundColor="#f2f2f2";
+</script>
+  {% endblock%}
